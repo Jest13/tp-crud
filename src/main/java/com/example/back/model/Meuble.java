@@ -37,6 +37,7 @@ public class Meuble {
 
 
     public Meuble(String meuble_name, String meuble_info, String meuble_prix, String meuble_short_info, String meuble_type, String meuble_stock) {
+        super();
         this.meuble_name = meuble_name;
         this.meuble_info = meuble_info;
         this.meuble_short_info = meuble_short_info;
