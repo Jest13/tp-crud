@@ -38,7 +38,7 @@ public class MeubleController {
     }
 
     @PutMapping("/meubles/{id}")
-    public ResponseEntity<Meuble> updateMeuble(@PathVariable Long id, @RequestBody Meuble meubleDetails){
+    public ResponseEntity<Meuble> updateMeuble(@PathVariable Long id, @RequestBody Meuble meubleDetails) {
         Meuble meuble = meubleRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Le meuble: " + id + " n'existe pas"));
         meuble.setMeuble_name(meubleDetails.getMeuble_name());
@@ -50,5 +50,8 @@ public class MeubleController {
 
         Meuble updateMeuble = meubleRepository.save(meuble);
 
+
+        return ResponseEntity.ok(updateMeuble);
     }
+
 }
