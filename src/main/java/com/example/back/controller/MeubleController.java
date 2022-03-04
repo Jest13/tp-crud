@@ -9,13 +9,16 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/")
 public class MeubleController {
 
     @Autowired
+
     private MeubleRepository meubleRepository;
 
     @CrossOrigin( origins = "*")
@@ -29,14 +32,14 @@ public class MeubleController {
         return meubleRepository.save(meuble);
 
     }
-
+    @CrossOrigin( origins = "*")
     @GetMapping("/meubles/{id}")
     public  ResponseEntity<Meuble>  getMeubleId(@PathVariable Long id){
         Meuble meuble = meubleRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Le meuble: " + id + " n'existe pas"));
         return ResponseEntity.ok(meuble);
     }
-
+    @CrossOrigin( origins = "*")
     @PutMapping("/meubles/{id}")
     public ResponseEntity<Meuble> updateMeuble(@PathVariable Long id, @RequestBody Meuble meubleDetails) {
         Meuble meuble = meubleRepository.findById(id)
@@ -53,5 +56,15 @@ public class MeubleController {
 
         return ResponseEntity.ok(updateMeuble);
     }
+    @CrossOrigin( origins = "*")
+    @DeleteMapping("/meubles/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteMeuble(@PathVariable Long id){
+        Meuble meuble = meubleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Le meuble: " + id + " n'existe pas"));
 
+        meubleRepository.delete(meuble);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
 }
