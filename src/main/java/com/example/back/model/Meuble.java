@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import javax.persistence.*;
 
 @Entity
-@EnableAutoConfiguration
 @Table(name = "meuble")
+@EnableAutoConfiguration
 public class Meuble {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
