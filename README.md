@@ -22,3 +22,7 @@ j'obtiens une reponse positive dans ma console
 
 et j'obtiens dans postman les tokens initialisés dans CustomAuthentificationFilter 
 ![image](https://user-images.githubusercontent.com/43670885/161422279-a2983b97-6575-4297-9ed1-df8c166a3d51.png)
+
+si je decrypte acces_tokens avec jwt.io j'obtiens mon utilisateur John connecté sur mon api 
+
+![image](https://user-images.githubusercontent.com/43670885/161422760-6c0f2fab-8d23-41af-b903-38aba1231f78.png)
